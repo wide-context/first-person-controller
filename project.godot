@@ -14,3 +14,8 @@ config/name="First Person Controller"
 run/main_scene="uid://wm077blai5r3"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[debug]
+
+gdscript/warnings/untyped_declaration=1
+gdscript/warnings/inferred_declaration=1

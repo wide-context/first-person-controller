@@ -1,21 +1,26 @@
 extends CharacterBody3D
 
-
-const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+const SPEED: float = 5.0
+const JUMP_VELOCITY: float = 4.5
 
 @onready var actor: Node3D = $Actor
 
 
 func _ready() -> void:
+	# Separate actor transform to allow manual interpolation
 	actor.top_level = true
+	
+	# Disable actor physics interpolation as we will manually interpolate
 	actor.physics_interpolation_mode = Node.PHYSICS_INTERPOLATION_MODE_OFF
 
 
 func _process(_delta: float) -> void:
+	# Update actor position to follow the FirstPersonController
 	if is_physics_interpolated_and_enabled():
+		# If the project settings use physics interpolation
 		actor.position = get_global_transform_interpolated().origin
 	else:
+		# If no physics interpolation, no need to use interpolated position
 		actor.position = global_transform.origin
 
 
@@ -28,11 +33,13 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	#var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	var direction := (actor.global_transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	# Get the input direction and handle the movement/deceleration
+	# Use the actor global basis to determine forward direction
+	var input_dir: Vector2 = Input.get_vector("ui_left", "ui_right",
+			"ui_up", "ui_down")
+	var direction: Vector3 = (actor.global_transform.basis *
+			Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
