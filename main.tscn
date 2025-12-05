@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://wm077blai5r3"]
+
+[ext_resource type="PackedScene" uid="uid://b3j4xm5e1riif" path="res://Levels/demo_level.tscn" id="1_ig7tw"]
+
+[node name="Main" type="Node"]
+
+[node name="GameWorld" type="Node3D" parent="."]
+
+[node name="DemoLevel" parent="GameWorld" instance=ExtResource("1_ig7tw")]
