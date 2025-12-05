@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://b0i7ks38kqkxp"]
+
+[ext_resource type="Script" uid="uid://c15jiky71vfsx" path="res://first_person_controller/scripts/look_up_down.gd" id="1_227sj"]
+[ext_resource type="Script" uid="uid://bikn1hrqcish" path="res://first_person_controller/scripts/look_left_right.gd" id="1_irgtj"]
+[ext_resource type="Script" uid="uid://0qq1xwfdbpek" path="res://first_person_controller/scripts/first_person_controller.gd" id="1_oewh3"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_luq18"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_luq18"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_227sj"]
+material = SubResource("StandardMaterial3D_luq18")
+
+[node name="FirstPersonController" type="CharacterBody3D"]
+script = ExtResource("1_oewh3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_luq18")
+
+[node name="Actor" type="Node3D" parent="."]
+script = ExtResource("1_irgtj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Actor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_227sj")
+
+[node name="Head" type="Node3D" parent="Actor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+script = ExtResource("1_227sj")
+
+[node name="Camera3D" type="Camera3D" parent="Actor/Head"]
