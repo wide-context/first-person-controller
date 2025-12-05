@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://wm077blai5r3"]
+[gd_scene load_steps=4 format=3 uid="uid://wm077blai5r3"]
 
+[ext_resource type="Script" uid="uid://cs4ycdcowwvoi" path="res://main.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://b3j4xm5e1riif" path="res://Levels/demo_level.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://b0i7ks38kqkxp" path="res://first_person_controller/first_person_controller.tscn" id="2_0xm2m"]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_h2yge")
 
 [node name="GameWorld" type="Node3D" parent="."]
 

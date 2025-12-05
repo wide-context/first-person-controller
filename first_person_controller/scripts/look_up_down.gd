@@ -10,12 +10,13 @@ var look_rotation: float = 0.0
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
-		# Apply horizontal mouse motion to look_rotation
-		look_rotation -= event.screen_relative.y * look_sensitivity
-		look_rotation = clampf(look_rotation, deg_to_rad(look_down_limit), deg_to_rad(look_up_limit))
-		
-		# Reset basis to prevent precision errors due to successive operations
-		transform.basis = Basis()
-		
-		# Rotate up and down
-		rotate_object_local(Vector3(1.0, 0.0, 0.0), look_rotation)
+		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+			# Apply horizontal mouse motion to look_rotation
+			look_rotation -= event.screen_relative.y * look_sensitivity
+			look_rotation = clampf(look_rotation, deg_to_rad(look_down_limit), deg_to_rad(look_up_limit))
+			
+			# Reset basis to prevent precision errors due to successive operations
+			transform.basis = Basis()
+			
+			# Rotate up and down
+			rotate_object_local(Vector3(1.0, 0.0, 0.0), look_rotation)
