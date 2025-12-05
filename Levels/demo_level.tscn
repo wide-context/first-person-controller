@@ -37,3 +37,30 @@ mesh = SubResource("BoxMesh_0xxsn")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 shape = SubResource("BoxShape3D_fkkic")
+
+[node name="Boxes" type="Node3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -4)
+use_collision = true
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Boxes"]
+transform = Transform3D(0.9209951, 0, 0.38957408, 0, 1, 0, -0.38957408, 0, 0.9209951, 5.735634, 0.5, -4)
+use_collision = true
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Boxes"]
+transform = Transform3D(0.68081033, 0, -0.7324597, 0, 1, 0, 0.7324597, 0, 0.68081033, 7.054413, 0.5, -4)
+use_collision = true
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.418423, 0.5, -2.7667916)
+use_collision = true
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Boxes"]
+transform = Transform3D(0.41507432, 0, -0.90978754, 0, 1, 0, 0.90978754, 0, 0.41507432, 6.418, 1.5, -3.5203156)
+use_collision = true
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1113167, 1.5, 6.176646)
+use_collision = true
+size = Vector3(5, 3, 5)
