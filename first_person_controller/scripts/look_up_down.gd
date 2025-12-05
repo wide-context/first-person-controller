@@ -8,6 +8,11 @@ var look_up_limit: float = 90.0
 var look_rotation: float = 0.0
 
 
+func _ready() -> void:
+	# Initialize look rotation to avoid snapping to 0.0
+	look_rotation = global_rotation.x
+
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:

@@ -6,6 +6,11 @@ var look_sensitivity: float = 0.002
 var look_rotation: float = 0.0
 
 
+func _ready() -> void:
+	# Initialize look rotation to avoid snapping to 0.0
+	look_rotation = global_rotation.y
+
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
