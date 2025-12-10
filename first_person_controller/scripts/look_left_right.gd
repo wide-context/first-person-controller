@@ -14,7 +14,7 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-			# Apply vertical mouse motion to look_rotation
+			# Apply horizontal mouse motion to look_rotation
 			look_rotation -= event.screen_relative.x * look_sensitivity
 			
 			# Wrap between 0.0 and TAU (0 and 360 deg)
